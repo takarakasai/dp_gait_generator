@@ -84,7 +84,7 @@ namespace Dp {
     /*   -   -
      *     o
      *   -   -   */
-    Gait dstep_cpos_harf = {
+    Gait dstep_cpos_half = {
       zero_step_,  zero_step_,
       zero_step_,  zero_step_,
       dstep / 2.0,
@@ -101,7 +101,7 @@ namespace Dp {
     /*   o   -
      *     -
      *   -   o   */
-    Gait dstep_flbr_harf = {
+    Gait dstep_flbr_half = {
       dstep / 2.0, zero_step_,
       zero_step_,  dstep / 2.0,
       zero_step_,
@@ -118,47 +118,48 @@ namespace Dp {
     /*   -   o 
      *     -
      *   o   -   */
-    Gait dstep_frbl_harf = {
-      dstep / 2.0,  zero_step_,
+    Gait dstep_frbl_half = {
       zero_step_,  dstep / 2.0,
+      dstep / 2.0,  zero_step_,
       zero_step_,
       FRBL,
     };
 
     Gait dstep_frbl_full = {
-      dstep,      zero_step_,
       zero_step_,      dstep,
+      dstep,      zero_step_,
       zero_step_,
       FRBL,
     };
 
-    step += dstep_flbr_harf;
+    step += dstep_flbr_half;
     gaits_.push_back(step);
 
-    step += dstep_cpos_harf;
+    step += dstep_cpos_half;
     gaits_.push_back(step);
 
     size_t count;
     for (count = 1; count < (nos - 1); count++) {
       if (count % 2) {
-        step += dstep_flbr_full;
-      } else {
         step += dstep_frbl_full;
+      } else {
+        step += dstep_flbr_full;
       }
       gaits_.push_back(step);
 
-      step += dstep_cpos_full;
+      //step += dstep_cpos_full;
+      step += dstep_cpos_half;
       gaits_.push_back(step);
     }
 
     if (step.swing == FLBR) {
-      step += dstep_frbl_harf;
+      step += dstep_frbl_half;
     } else {
-      step += dstep_flbr_harf;
+      step += dstep_flbr_half;
     }
     gaits_.push_back(step);
 
-    step += dstep_cpos_harf;
+    step += dstep_cpos_half;
     gaits_.push_back(step);
 
     return gaits_;
