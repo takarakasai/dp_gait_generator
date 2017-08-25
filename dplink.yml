@@ -1,0 +1,6 @@
+project : dp_gait_generator
+type    : lib
+depends :
+  - url : git@github.com:takarakasai/dpcommon.git
+    branch : master
+    options :
