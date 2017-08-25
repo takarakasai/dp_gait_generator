@@ -26,6 +26,17 @@ namespace Dp {
 
   /* Gaits */
 
+  Gait Gait::LocalGait() {
+    Gait gait = {
+      fl - cpos, fr - cpos,
+      bl - cpos, br - cpos,
+      {0.0, 0.0, 0.0},
+      swing,
+    };
+
+    return std::move(gait);
+  }
+
   void DebugDump(const Gait& gait) {
     using namespace std;
     std::cout << showpos << " STEP   : "  << ToString(gait.swing) << " ( " << gait.swing << " )" << std::endl;

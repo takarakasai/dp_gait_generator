@@ -25,8 +25,8 @@ namespace Dp {
       default  : return "UNKNOWN";
     }
   }
- 
-  typedef struct {
+
+  typedef struct sGait {
     Vector3d fl;
     Vector3d fr;
     Vector3d bl;
@@ -34,6 +34,8 @@ namespace Dp {
 
     Vector3d cpos;
     LEG_SWING_PATTERN swing;
+
+    sGait LocalGait();
   }Gait;
 
   typedef std::vector<Gait> Gaits;
